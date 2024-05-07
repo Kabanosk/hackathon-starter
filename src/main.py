@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.include_router(
     main_router,
-    prefix="/",
+    prefix="",
 )
 app.include_router(
     users_router,

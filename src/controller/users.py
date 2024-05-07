@@ -4,10 +4,10 @@ from fastapi.templating import Jinja2Templates
 from src.model.users import User
 
 router = APIRouter()
-templates = Jinja2Templates(directory="view")
+templates = Jinja2Templates(directory="src/view")
 
 
-@router.get("/")
+@router.get("/{u_id}")
 async def read_root(request: Request, u_id: int = None):
     if u_id is not None:
         user = User.get_by_id(u_id)
