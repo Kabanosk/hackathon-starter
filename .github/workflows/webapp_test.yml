@@ -28,8 +28,15 @@ jobs:
       - name: Build Docker image
         run: docker build -t app .
 
-      - name: Run Docker Container
-        run: docker run -d -p 8000:8000 app
+      - name: Run Docker Container and wait until web server is up
+        run: |
+          docker run --name app_container -d -p 8000:8000 app
+          timeout 60 bash -c 'until echo > /dev/tcp/localhost/8000; do sleep 1; done'
 
       - name: Run tests
-        run: python -m pytest tests/api.py
+        run: pytest tests/api.py
+
+      - name: Stop and remove container
+        run: |
+          docker stop app_container
+          docker rm app_container
