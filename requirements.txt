@@ -1,4 +1,6 @@
 fastapi
 jinja2
-requests
+psycopg2-binary
 pytest
+python-dotenv
+requests
