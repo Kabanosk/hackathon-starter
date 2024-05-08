@@ -31,7 +31,7 @@ jobs:
           timeout 60 bash -c 'until echo > /dev/tcp/localhost/8000; do sleep 1; done'
 
       - name: Run tests
-        run: pytest tests/api.py
+        run: pytest tests/database.py
 
       - name: Stop and remove container
         run: docker-compose down
