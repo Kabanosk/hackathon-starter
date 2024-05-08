@@ -7,11 +7,14 @@ router = APIRouter()
 templates = Jinja2Templates(directory="src/view")
 
 
-@router.get("/{u_id}")
-async def read_root(request: Request, u_id: int = None):
-    if u_id is not None:
-        user = User.get_by_id(u_id)
-        if user is None:
-            raise HTTPException(status_code=404, detail="User not found")
-        return templates.TemplateResponse("users.html", {"request": request, "user": user})
-    return templates.TemplateResponse("index.html", {"request": request, "msg": "User not found"})
+@router.get('/{u_id}')
+async def get_users(u_id: int):
+    user = User.get_by_id(u_id)
+    return user.__dict__()
+
+
+@router.post('/')
+async def add_user(user: dict):
+    new_user = User(user['name'], user['email'])
+    new_user.save()
+    return {'message': 'User added successfully'}
