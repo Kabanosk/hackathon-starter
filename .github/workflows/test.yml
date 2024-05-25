@@ -22,7 +22,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install poetry==1.8.1
+          poetry install
 
       - name: Run docker compose and wait until web server is up
         env:
