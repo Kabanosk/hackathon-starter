@@ -14,10 +14,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python 3.8
+      - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
 
       - name: Install dependencies
         run: |
@@ -45,10 +45,10 @@ jobs:
           timeout 60 bash -c 'until echo > /dev/tcp/localhost/8000; do sleep 1; done'
 
       - name: Run API tests
-        run: pytest tests/api.py
+        run: pytest tests/test_api.py
 
       - name: Run database tests
-        run: docker exec hackathon-starter_web_1 pytest tests/database.py
+        run: docker exec hackathon-starter_web_1 pytest tests/test_database.py
 
       - name: Stop and remove container
         run: docker-compose down
