@@ -36,7 +36,7 @@ jobs:
           echo "DB_NAME=$DB_NAME" >> .env
           echo "DB_USER=$DB_USER" >> .env
           echo "DB_PASS=$DB_PASS" >> .env
-          docker-compose up --build -d
+          docker compose up --build -d
           
           # Wait for PostgreSQL to be ready
           timeout 60 bash -c 'until docker exec hackathon-starter_db_1 pg_isready; do sleep 1; done'
@@ -51,4 +51,4 @@ jobs:
         run: docker exec hackathon-starter_web_1 pytest tests/test_database.py
 
       - name: Stop and remove container
-        run: docker-compose down
+        run: docker compose down
