@@ -4,7 +4,7 @@ class User:
         self.name = name
 
     def __dict__(self):
-        return {'u_id': self.u_id, 'name': self.name}
+        return {"u_id": self.u_id, "name": self.name}
 
     @staticmethod
     def get_by_id(u_id: int):

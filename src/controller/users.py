@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.templating import Jinja2Templates
 
 from src.model.users import User
@@ -7,14 +7,14 @@ router = APIRouter()
 templates = Jinja2Templates(directory="src/view")
 
 
-@router.get('/{u_id}')
+@router.get("/{u_id}")
 async def get_users(u_id: int):
     user = User.get_by_id(u_id)
     return user.__dict__()
 
 
-@router.post('/')
+@router.post("/")
 async def add_user(user: dict):
-    new_user = User(user['name'], user['email'])
+    new_user = User(user["name"], user["email"])
     new_user.save()
-    return {'message': 'User added successfully'}
+    return {"message": "User added successfully"}

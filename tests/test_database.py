@@ -11,12 +11,15 @@ class TestDatabase:
         cursor.execute("CREATE TABLE IF NOT EXISTS test (id SERIAL PRIMARY KEY, test_val VARCHAR(100))")
         conn.commit()
 
-        cursor.execute("""
+        cursor.execute(
+            """
                 SELECT EXISTS (
                     SELECT FROM information_schema.tables 
                     WHERE table_name = %s
                 );
-            """, ('test',))
+            """,
+            ("test",),
+        )
         exists = cursor.fetchone()[0]
         assert exists
 
@@ -40,12 +43,15 @@ class TestDatabase:
 
         cursor.execute("DROP TABLE test")
         conn.commit()
-        cursor.execute("""
+        cursor.execute(
+            """
                         SELECT EXISTS (
                             SELECT FROM information_schema.tables 
                             WHERE table_name = %s
                         );
-                    """, ('test',))
+                    """,
+            ("test",),
+        )
         exists = cursor.fetchone()[0]
         assert not exists
 
