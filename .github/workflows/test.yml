@@ -39,7 +39,7 @@ jobs:
           docker compose up --build -d
           
           # Wait for PostgreSQL to be ready
-          timeout 60 bash -c 'until docker exec hackathon-starter_db_1 pg_isready; do sleep 1; done'
+          timeout 60 bash -c 'until docker exec hackathon-starter-db-1 pg_isready; do sleep 1; done'
 
           # Additional wait for application to be ready (replace port 8000 with your application's port)
           timeout 60 bash -c 'until echo > /dev/tcp/localhost/8000; do sleep 1; done'
@@ -48,7 +48,7 @@ jobs:
         run: pytest tests/test_api.py
 
       - name: Run database tests
-        run: docker exec hackathon-starter_web_1 pytest tests/test_database.py
+        run: docker exec hackathon-starter-web-1 pytest tests/test_database.py
 
       - name: Stop and remove container
         run: docker compose down
