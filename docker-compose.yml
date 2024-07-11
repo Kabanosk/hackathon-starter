@@ -22,6 +22,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     env_file:
       - .env
+    stdin_open: true
 
 volumes:
     postgres_data:
