@@ -31,8 +31,8 @@ jobs:
           DB_HOST: ${{ secrets.DB_HOST }}
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
+          DB_PASS: ${{ secrets.DB_PASSWORD }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: |
           echo "DB_HOST=$DB_HOST" > .env
           echo "DB_NAME=$DB_NAME" >> .env
