@@ -37,8 +37,8 @@ jobs:
           echo "DB_HOST=$DB_HOST" > .env
           echo "DB_NAME=$DB_NAME" >> .env
           echo "DB_USER=$DB_USER" >> .env
-          echo "DB_PASS=$DB_PASSWORD" >> .env
-          echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> .env
+          echo "DB_PASS=$DB_PASS" >> .env
+          echo "POSTGRES_PASSWORD=$DB_PASS" >> .env
           docker-compose up --build -d
 
           docker-compose ps
