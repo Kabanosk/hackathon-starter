@@ -30,11 +30,13 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
         run: |
           echo "DB_HOST=$DB_HOST" > .env
           echo "DB_NAME=$DB_NAME" >> .env
           echo "DB_USER=$DB_USER" >> .env
           echo "DB_PASS=$DB_PASS" >> .env
+          echo "POSTGRES_PASSWORD=$POSTGRES_PASSWORD" >> .env
           docker-compose up --build -d
 
           docker-compose ps
