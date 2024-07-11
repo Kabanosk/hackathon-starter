@@ -59,7 +59,7 @@ The workflow is triggered on every push to the `main` branch.
 To use GitHub Actions in your repository, you need to add secrets to your repository settings:
 - `DB_HOST`
 - `DB_USER`
-- `DB_PASS`
+- `DB_PASSWORD`
 - `DB_NAME`
 
 ## License
