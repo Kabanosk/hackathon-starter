@@ -39,6 +39,9 @@ jobs:
           echo "DB_USER=$DB_USER" >> .env
           echo "DB_PASS=$DB_PASS" >> .env
           docker-compose up --build -d
+          
+          echo "Checking .env"
+          cat .env
 
           docker-compose ps
           docker ps
