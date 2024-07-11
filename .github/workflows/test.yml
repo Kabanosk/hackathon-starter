@@ -36,6 +36,8 @@ jobs:
           echo "DB_USER=$DB_USER" >> .env
           echo "DB_PASS=$DB_PASS" >> .env
           docker-compose up --build -d
+
+          docker-compose ps
           
           # Wait for PostgreSQL to be ready
           timeout 60 bash -c 'until docker exec hackathon-starter_db_1 pg_isready; do sleep 1; done'
