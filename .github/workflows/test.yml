@@ -5,6 +5,8 @@ on:
       - main
       - refactor
   pull_request_target:
+    types:
+      - opened
     branches:
       - main
 
