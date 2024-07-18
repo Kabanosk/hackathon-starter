@@ -11,12 +11,10 @@ on:
       - synchronize
       - opened
       - edited
-    branches:
-      - main
-      - refactor
 
 jobs:
   build-and-test:
+    if:  startsWith(github.head_ref, 'refactor')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
