@@ -36,7 +36,7 @@ poetry shell
 ### Build the Docker image and run the containers
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 ### Testing
@@ -48,12 +48,12 @@ docker exec hackathon-starter_web_1 poetry run pytest tests/test_database.py  # 
 ### Stop the containers
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Creating or updating tables in database
-To create new table in database just create needed class in `src/model/tables.py` similar to `Example` class.
-If you want to change table, just look for your table in `src/model/tables.py` and do needed changes.
+To create new table in database just create needed class in `src/model/tables.py` similar to `Example` class. \
+If you want to change table, just look for your table in `src/model/tables.py` and do needed changes. \
 After creating or updating tables create new migration.
 
 ### Creating migrations
@@ -77,7 +77,7 @@ The workflow is triggered on every push to the `main` branch.
 To use GitHub Actions in your repository, you need to add secrets to your repository settings:
 - `DB_HOST`
 - `DB_USER`
-- `DB_PASSWORD`
+- `DB_PASS`
 - `DB_NAME`
 
 ## License
