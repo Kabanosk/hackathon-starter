@@ -24,6 +24,7 @@ DB_USER=postgres
 DB_PASS=postgres
 DB_HOST=db
 DB_NAME=postgres
+DB_PORT=5432
 ```
 
 ### Create a virtual environment and install the dependencies
@@ -49,6 +50,23 @@ docker exec hackathon-starter_web_1 poetry run pytest tests/test_database.py  # 
 ```bash
 docker-compose down
 ```
+
+### Creating or updating tables in database
+To create new table in database just create needed class in `src/model/tables.py` similar to `Example` class.
+If you want to change table, just look for your table in `src/model/tables.py` and do needed changes.
+After creating or updating tables create new migration.
+
+### Creating migrations
+To create new migration simply run
+```
+alembic revision --autogenerate -m "example comment"
+alembic upgrade head
+```
+
+### Linting
+We are using following tools:
+* black - to run use `black <path to file>`
+* isort - to run use `isort <path to file>`
 
 ### GitHub Actions
 This project uses GitHub Actions for CI. 
