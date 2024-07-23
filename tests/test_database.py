@@ -1,5 +1,3 @@
-import pytest
-
 from src.model.utils import Database
 
 
