@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - '[0-9]*-*[a-zA-Z]*'  # regex should match typical issue branches names
+      - 'feature/*'
   pull_request:
     branches:
       - main
