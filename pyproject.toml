@@ -14,6 +14,9 @@ pytest = "^8.2.1"
 python-dotenv = "^1.0.1"
 requests = "^2.32.2"
 alembic = "^1.13.2"
+pylint = "^3.2.6"
+black = "^24.4.2"
+isort = "^5.13.2"
 
 
 [build-system]
@@ -25,3 +28,17 @@ line-length = 120
 
 [tool.isort]
 profile = "black"
+
+[tool.pylint]
+ignore = ["alembic"]
+max-line-length = 120
+
+[tool.pylint.messages_control]
+disable = [
+  "missing-docstring",
+  "no-member",
+  "missing-class-docstring",
+  "missing-function-docstring",
+  "missing-timeout",
+  "too-few-public-methods",
+]

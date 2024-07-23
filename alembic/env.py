@@ -1,5 +1,4 @@
 import os
-from logging.config import fileConfig
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
@@ -9,7 +8,7 @@ from src.model.tables import metadata
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
-config = load_dotenv()
+CONFIG = load_dotenv()
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-      - 6-docker-compose-instead-of-docker-compose
+      - 'feature/*'
+      - '[0-9]*-*[a-zA-Z]*'  # regex should match typical issue branches names
   pull_request:
     branches:
       - main
@@ -63,3 +64,5 @@ jobs:
 
       - name: Stop and remove container
         run: docker compose down
+
+  
