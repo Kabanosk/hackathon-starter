@@ -30,7 +30,7 @@ line-length = 120
 profile = "black"
 
 [tool.pylint]
-ignore = ["alembic"]
+ignore = ["alembic","__init__.py"]
 max-line-length = 120
 
 [tool.pylint.messages_control]

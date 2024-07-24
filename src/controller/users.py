@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter
 from fastapi.templating import Jinja2Templates
 
 from src.model.users import User
