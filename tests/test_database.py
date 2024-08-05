@@ -12,7 +12,7 @@ class TestDatabase:
         cursor.execute(
             """
                 SELECT EXISTS (
-                    SELECT FROM information_schema.tables 
+                    SELECT FROM information_schema.tables
                     WHERE table_name = %s
                 );
             """,
@@ -44,7 +44,7 @@ class TestDatabase:
         cursor.execute(
             """
                         SELECT EXISTS (
-                            SELECT FROM information_schema.tables 
+                            SELECT FROM information_schema.tables
                             WHERE table_name = %s
                         );
                     """,

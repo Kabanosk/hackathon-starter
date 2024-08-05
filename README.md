@@ -4,7 +4,7 @@ A simple Python project to get you started with web development and testing usin
 
 ## Prerequisites
 
-- Python 3.8
+- Python 3.9
 - Docker
 - Docker Compose
 - Poetry
@@ -42,11 +42,11 @@ DB_HOST=db
 DB_NAME=postgres
 DB_PORT=5432
 ```
-### Setup 
+### Setup
 #### Create a virtual environment and install the dependencies
 
 ```bash
-poetry shell 
+poetry shell
 ```
 
 #### Build the Docker image and run the containers
@@ -90,9 +90,15 @@ We are using following tools:
 
 If you want to lint every file using all at once you can also run `make lint`
 
+Beside that you can also use pre-commit.
+```
+pre-commit install
+pre-commit run --all-files
+```
+
 #### GitHub Actions
-This project uses GitHub Actions for CI. 
-The workflow is defined in `.github/workflows/main.yml`. 
+This project uses GitHub Actions for CI.
+The workflow is defined in `.github/workflows/main.yml`.
 It sets up a Python environment, installs the dependencies, runs Docker Compose, and runs the tests.
 The workflow is triggered on every push to the `main` branch.
 

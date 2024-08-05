@@ -6,7 +6,7 @@ authors = ["Grzegorz Kodrzycki <g.kodrzycki20@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 fastapi = "^0.111.0"
 jinja2 = "^3.1.4"
 psycopg2-binary = "^2.9.9"
@@ -17,6 +17,8 @@ alembic = "^1.13.2"
 pylint = "^3.2.6"
 black = "^24.4.2"
 isort = "^5.13.2"
+pre-commit = "^3.8.0"
+detect-secrets = "^1.5.0"
 
 
 [build-system]
