@@ -10,7 +10,7 @@ templates = Jinja2Templates(directory="src/view")
 @router.get("/{u_id}")
 async def get_users(u_id: int):
     user = User.get_by_id(u_id)
-    return user.__dict__()
+    return user.to_dict()
 
 
 @router.post("/")

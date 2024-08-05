@@ -3,7 +3,7 @@ class User:
         self.u_id = u_id
         self.name = name
 
-    def __dict__(self):
+    def to_dict(self):
         return {"u_id": self.u_id, "name": self.name}
 
     @staticmethod
