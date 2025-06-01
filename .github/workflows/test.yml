@@ -34,8 +34,6 @@ jobs:
         run: |
           docker compose up --build -d
 
-          docker ps
-
           docker compose logs db
 
           timeout 60 bash -c 'until docker compose exec db pg_isready; do sleep 1; done'
