@@ -38,7 +38,7 @@ jobs:
 
           docker compose logs db
 
-          timeout 60 bash -c 'until docker exec db pg_isready; do sleep 1; done'
+          timeout 60 bash -c 'until docker compose exec db pg_isready; do sleep 1; done'
 
           timeout 60 bash -c 'until curl -s http://localhost:8000/health || curl -s http://localhost:8000; do sleep 1; done'
 
@@ -46,7 +46,7 @@ jobs:
         run: poetry run pytest tests/test_api.py
 
       - name: Run database tests
-        run: docker exec hackathon-starter-web-1 poetry run pytest tests/test_database.py
+        run: docker compose exec hackathon-starter-web-1 poetry run pytest tests/test_database.py
 
       - name: Stop and remove container
         run: docker compose down
