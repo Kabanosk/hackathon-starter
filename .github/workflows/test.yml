@@ -5,9 +5,6 @@ on:
     branches:
       - main
       - 'feature/*'
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-and-test:
@@ -37,12 +34,12 @@ jobs:
         run: |
           docker compose up --build -d
 
+          docker ps
+
           docker compose logs db
 
-          # Wait for PostgreSQL to be ready
           timeout 60 bash -c 'until docker exec db pg_isready; do sleep 1; done'
 
-          # Additional wait for application to be ready (replace port 8000 with your application's port)
           timeout 60 bash -c 'until curl -s http://localhost:8000/health || curl -s http://localhost:8000; do sleep 1; done'
 
       - name: Run API tests
