@@ -33,6 +33,7 @@ jobs:
           DB_NAME: ${{ secrets.DB_NAME }}
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
         run: |
           docker compose up --build -d
 
