@@ -5,7 +5,6 @@ on:
     branches:
       - main
       - 'feature/*'
-      - '[0-9]*-*[a-zA-Z]*'  # regex should match typical issue branches names
   pull_request:
     branches:
       - main
@@ -15,12 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.9
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: '3.9'
 
       - name: Install dependencies
         run: |
@@ -35,26 +34,15 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASS: ${{ secrets.DB_PASS }}
         run: |
-          echo "DB_HOST=$DB_HOST" > .env
-          echo "DB_NAME=$DB_NAME" >> .env
-          echo "DB_USER=$DB_USER" >> .env
-          echo "DB_PASS=$DB_PASS" >> .env
           docker compose up --build -d
 
-          echo "Checking .env"
-          cat .env
-
-          docker compose ps
-          docker ps
-
-          echo "Checking logs for the database container"
-          docker logs hackathon-starter-db-1
+          docker compose logs db
 
           # Wait for PostgreSQL to be ready
-          timeout 60 bash -c 'until docker exec hackathon-starter-db-1 pg_isready; do sleep 1; done'
+          timeout 60 bash -c 'until docker exec db pg_isready; do sleep 1; done'
 
           # Additional wait for application to be ready (replace port 8000 with your application's port)
-          timeout 60 bash -c 'until echo > /dev/tcp/localhost/8000; do sleep 1; done'
+          timeout 60 bash -c 'until curl -s http://localhost:8000/health || curl -s http://localhost:8000; do sleep 1; done'
 
       - name: Run API tests
         run: poetry run pytest tests/test_api.py
