@@ -41,6 +41,7 @@ DB_PASS=postgres
 DB_HOST=db
 DB_NAME=postgres
 DB_PORT=5432
+POSTGRES_PASSWORD=postgres
 ```
 ### Setup
 #### Create a virtual environment and install the dependencies
@@ -52,7 +53,7 @@ poetry shell
 #### Build the Docker image and run the containers
 
 ```bash
-docker compose up --build
+docker compose --env-file .env up --build
 ```
 
 #### Testing
